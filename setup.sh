@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-backup_uuid="${BACKUP_UUID}"
-data_uuid="${DATA_UUID}"
+backup_uuid="${BACKUP_UUID:-56041e32-b5ab-3ac2-b2bc-4334d566e7a1}"
+data_uuid="${DATA_UUID:-ec334617-50d9-3f2c-b6d5-6ddc36229072}"
 [[ -z $backup_uuid ]] && (echo "missing BACKUP_UUID disk uuid" && exit 1)
 [[ -z $data_uuid ]] && (echo "missing DATA_UUID disk uuid" && exit 1)
 
@@ -41,9 +41,11 @@ cat >>/etc/netatalk/afp.conf <<_EOF_
 [Tresor]
   path = /media/Tresor
   time machine = yes
+  valid users = gabe
 
 [Data]
   path = /media/Data
+  valid users = gabe
 _EOF_
 
 # create overrides in /etc/systemd/system for avahi and netatalk for dependency on our mounts

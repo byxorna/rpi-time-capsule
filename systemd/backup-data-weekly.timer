@@ -1,0 +1,10 @@
+[Unit]
+Description=Run backup-data weekly
+Requires=backup-data.service
+[Timer]
+Unit=backup-data.service
+OnUnitInactiveSec=1w
+RandomizedDelaySec=15m
+AccuracySec=1s
+[Install]
+WantedBy=timers.target
