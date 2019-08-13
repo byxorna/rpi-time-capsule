@@ -2,6 +2,6 @@
 Description=Perform backup of /media/Data to /media/Tresor
 Wants=backup-data.timer
 [Service]
-ExecStart=rsync -avzh /media/Data /media/Tresor/Backup/Data
+ExecStart=rsync -avzh /media/Data/ /media/Tresor/Backup/Data
 [Install]
 WantedBy=multi-user.target
